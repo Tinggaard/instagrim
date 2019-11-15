@@ -27,11 +27,11 @@ def create_app(test_config=None):
         # On first ever request to the app folders are created,
         # on subsequent requests the folders already exist.
         pass
-        
+
     from . import db
     db.init_app(app)
 
-    from . import instagrim 
+    from . import instagrim
     app.register_blueprint(instagrim.bp)
 
     return app

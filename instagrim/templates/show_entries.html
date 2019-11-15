@@ -3,10 +3,10 @@
 {% for entry in entries %}
 <div class="entry">
     <a href="{{ url_for('instagrim.show_entry', id=entry.id) }}">
-        <img src="{{ url_for(instagrim.send_image_dev, filename="{}".format(entry.imagefile)) }}">
+        <img src="{{ url_for('instagrim.image_file', filename=entry.imagefile) }}">
     </a>
-        <p class="author">{{ entry.username }} - {{ entry.date }}</p>
-        <p>{{ entry.date }}</p>
+    <p class="author"><b>{{ entry.username }}</b> - <i>{{ entry.date | ctime}}</i></p>
+
     <p>{{ entry.message }}</p>
 </div>
 {% else %}
