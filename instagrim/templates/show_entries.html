@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block body %}
+{% for entry in entries %}
+<div class="entry">
+    <a href="{{ url_for('instagrim.show_entry', id=entry.id) }}">
+        <img src="{{ url_for(instagrim.send_image_dev, filename="{}".format(entry.imagefile)) }}">
+    </a>
+        <p class="author">{{ entry.username }} - {{ entry.date }}</p>
+        <p>{{ entry.date }}</p>
+    <p>{{ entry.message }}</p>
+</div>
+{% else %}
+<em>Unbelievable, no posts yet!</em>
+{% endfor %}
+{% endblock %}
