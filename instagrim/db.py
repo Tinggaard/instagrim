@@ -1,6 +1,7 @@
 import sqlite3
-
 import click
+from os import mkdir
+from shutil import rmtree
 from flask import current_app, g
 from flask.cli import with_appcontext
 
@@ -26,6 +27,8 @@ def close_db(e=None):
 def init_db():
     """ Initialize a new empty database according to schema. """
     db = get_db()
+    rmtree('instance\\images')
+    mkdir('instance\\images')
 
     with current_app.open_resource('schema.sql') as f:
         db.executescript(f.read().decode('utf8'))

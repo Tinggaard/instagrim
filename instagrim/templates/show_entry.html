@@ -2,5 +2,17 @@
 {% extends "layout.html" %}
 {% block body %}
     <img class="full" src="{{ url_for('instagrim.image_file', filename=entry.imagefile) }}">
-    <p class="caption">{{ entry.username }} ({{ entry.date | ctime }} ago): {{ entry.message }}</p>
+    <p class="caption">Likes: {{ entry.likes }}</p>
+    <a href="{{ url_for('instagrim.show_user', user=entry.username) }}">
+        <p class="caption">{{ entry.username }} ({{ entry.date | ctime }} ago):</p>
+    </a>
+    <p class="caption">{{ entry.message }}</p>
+
+
+    <form action="{{ url_for('instagrim.show_entry', id=entry.id) }}" method="post">
+        <input class="button" type="submit" value="Like!">
+    </form>
+
+
+
 {% endblock %}
